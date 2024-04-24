@@ -6,7 +6,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 
-                sh 'git clone https://kishore-tailwinds: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@github.com/kishore-tailwinds/kishore-application.git'
+                sh 'git clone https://kishore-tailwinds:${params.Token}@github.com/SamuvelTailwinds/crud-app.git'
             }
         }
         
@@ -26,7 +26,7 @@ pipeline {
         stage('Push') {
                    environment{
                          DOCKERHUB_USERNAME ="samuvel"
-                         DOCKERHUB_PASSWORD ='dckr_pat_bBKxI59d26iZL3idkrmgwXBAsww'
+                         DOCKERHUB_PASSWORD =${prams.docker_token}
                    }
             steps{
                 script {
