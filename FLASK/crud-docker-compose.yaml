@@ -1,0 +1,33 @@
+# This docker-compose.Yaml contains a Python-based crud-app image and a MongoDB based crud-db image.
+# username is samuvel then the image name is crud-app and crud-db and the tag is v1 (samuvel/crud-app:v1),(samuvel/crud-db:v1)
+# Run | docker-compose up -d | to up the crud-app (api) application
+version: '3.8'
+
+services:
+  crud-app:
+    image: samuvel/crud-app:v1
+    container_name: crud-app
+    restart: always
+    ports:
+      - "5000:5000"  
+    depends_on:
+      - mongodb
+    networks:
+      - crud-networks
+      
+  mongodb:
+    image: samuvel/crud-db:v1
+    container_name: crud-db
+    restart: always
+    ports:
+      - "27017:27017"  
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - crud-networks  
+
+networks:
+  crud-networks:
+
+volumes:
+  mongodb_data:

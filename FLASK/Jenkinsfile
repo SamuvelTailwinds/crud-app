@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+        
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                
+                sh 'git clone https://kishore-tailwinds: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@github.com/kishore-tailwinds/kishore-application.git'
+            }
+        }
+        
+        stage('Docker Build') {
+            steps{
+                 
+                dir("kishore-application"){
+                
+                    sh "ls"
+                    sh "docker build -t crud-app:latest -f Dockerfile ." 
+                }
+              
+                }
+            }
+    
+
+        stage('Push') {
+                   environment{
+                         DOCKERHUB_USERNAME ="samuvel"
+                         DOCKERHUB_PASSWORD ='dckr_pat_bBKxI59d26iZL3idkrmgwXBAsww'
+                   }
+            steps{
+                script {
+                    sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin"
+                    sh "docker tag crud-app:latest samuvel/crud-app:latest"
+                    sh "docker push samuvel/crud-app:latest"
+                    
+                    }
+                }
+            }
+        
+
+        stage('Deploy') {
+            steps {
+                
+                script {
+                    sshagent(['ssh-credentials']) {
+                        sh 'ssh user@ubuntu-vm-ip "docker pull your-image-name:latest && docker run -d -p 8080:8080 your-image-name:latest"'
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    post {
+        always {
+            cleanWs()
+                
+        }
+        success {
+            echo 'CI/CD pipeline succeeded!'
+        
+        }
+        failure {
+            echo 'CI/CD pipeline failed!'
+        }
+    }
+}
