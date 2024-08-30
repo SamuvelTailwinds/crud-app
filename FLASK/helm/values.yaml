@@ -51,7 +51,7 @@ env:
 mongodb:
   enabled: true
   image:
-    repository: mongo
+    repository: samuvel/crud-db
     tag: latest
     pullPolicy: IfNotPresent
   service:
