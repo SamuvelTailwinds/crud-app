@@ -9,7 +9,7 @@ app:
 # Image configuration
 image:
   repository: samuvel/crud-app
-  tag: "latest"
+  tag: "v4"
   pullPolicy: IfNotPresent
 
 # Kubernetes deployment configuration
