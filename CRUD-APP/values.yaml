@@ -37,6 +37,16 @@ serviceAccount:
   create: true   # Set to true if you want to create a new service account
   name: ""       # If not provided, a default name will be used
 
+# Ingress configuration
+ingress:
+  enabled: false  # Set to true to enable ingress
+  annotations: {}
+  hosts:
+    - host: crud-app.example.com  # Replace with your domain
+      paths:
+        - /
+  tls: []  # Configure TLS if needed, otherwise leave empty
+
 # Volume mounts (if needed for persistence)
 volumes: []
 volumeMounts: []
