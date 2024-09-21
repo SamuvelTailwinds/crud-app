@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   name: {{ include "crud-app.name" . }}
   labels:
-    {{ include "crud-app.labels" . | nindent 6 }}
+    {{- include "CRUD-APP.labels" . | nindent 8 }}
+
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
