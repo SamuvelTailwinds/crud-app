@@ -1,15 +1,12 @@
-apiVersion: v1
-kind: Pod
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: "{{ include "CRUD-APP.fullname" . }}-test-connection"
-  labels:
-    {{- include "CRUD-APP.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": test
+  name: {{ include "CRUD-APP.fullname" . }}-test-connection
 spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "CRUD-APP.fullname" . }}:{{ .Values.service.port }}']
-  restartPolicy: Never
+  template:
+    spec:
+      containers:
+        - name: test-connection
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command: ["sh", "-c", "echo 'Testing connection...'"]
+      restartPolicy: Never
