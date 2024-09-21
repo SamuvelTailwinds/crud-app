@@ -12,14 +12,14 @@ app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
 {{/*
 Generate a full name for resources
 */}}
-{{- define "CRUD-APP.fullname" -}}
+{{- define "crud-app.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Define the service account name
 */}}
-{{- define "CRUD-APP.serviceAccountName" -}}
+{{- define "crud-app.serviceAccountName" -}}
 {{- printf "%s-sa" (include "CRUD-APP.fullname" .) -}}
 {{- end -}}
 
