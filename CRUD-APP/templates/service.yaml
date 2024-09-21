@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "CRUD-APP.fullname" . }}
+  name: {{ .Values.app.name }}-service
   labels:
-    {{- include "CRUD-APP.labels" . | nindent 4 }}
+    app: {{ .Values.app.name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+      targetPort: {{ .Values.service.targetPort }}
+      nodePort: {{ .Values.service.nodePort | default 30001 }}
   selector:
-    {{- include "CRUD-APP.selectorLabels" . | nindent 4 }}
+    app: {{ .Values.app.name }}
