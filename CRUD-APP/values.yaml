@@ -1,17 +1,20 @@
 # values.yaml
 
+# Application name and labels
 app:
   name: crud-app
   labels:
     app: crud-app
 
+# Image configuration
 image:
   repository: samuvel/crud-app
   tag: "v28"
   pullPolicy: IfNotPresent
 
+# Kubernetes deployment configuration
 deployment:
-  replicas: 2
+  replicas: 2  # Number of replicas
   podAnnotations: {}
   podLabels: {}
   resources:
@@ -22,11 +25,18 @@ deployment:
       cpu: 50m
       memory: 64Mi
 
+# Service configuration
 service:
-  type: ClusterIP
+  type: ClusterIP  # Can be ClusterIP, NodePort, or LoadBalancer
   port: 80
   targetPort: 5000
-  nodePort: 30001
+  nodePort: 30001  # Only used if service.type is NodePort
 
+# ServiceAccount configuration
+serviceAccount:
+  create: true   # Set to true if you want to create a new service account
+  name: ""       # If not provided, a default name will be used
+
+# Volume mounts (if needed for persistence)
 volumes: []
 volumeMounts: []
