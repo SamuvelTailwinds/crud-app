@@ -20,12 +20,12 @@ Generate a full name for resources
 Define the service account name
 */}}
 {{- define "crud-app.serviceAccountName" -}}
-{{- printf "%s-sa" (include "CRUD-APP.fullname" .) -}}
+{{- printf "%s-sa" (include "crud-app.fullname" .) -}}
 {{- end -}}
 
 {{/*
 Define the name of the application
 */}}
 {{- define "crud-app.name" -}}
-{{- .Chart.Name | lower | replace "_" "-" -}}
+{{ .Chart.Name }}
 {{- end -}}
