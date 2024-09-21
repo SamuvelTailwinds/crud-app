@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "CRUD-APP.fullname" . }}-test-connection
+  name: {{ include "crud-app.fullname" . }}-test-connection
 spec:
   template:
     spec:

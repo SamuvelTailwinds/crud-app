@@ -1,5 +1,3 @@
-# values.yaml
-
 # Application name and labels
 app:
   name: crud-app
