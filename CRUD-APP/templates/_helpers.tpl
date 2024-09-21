@@ -14,3 +14,9 @@ Generate a full name for resources
 {{- define "CRUD-APP.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+{{/*
+Define the service account name
+*/}}
+{{- define "CRUD-APP.serviceAccountName" -}}
+{{- printf "%s-sa" (include "CRUD-APP.fullname" .) -}}
+{{- end -}}
