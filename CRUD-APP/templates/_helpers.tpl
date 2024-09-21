@@ -1,7 +1,7 @@
 {{/*
 Define a common set of labels to be used in your chart
 */}}
-{{- define "crud-app.labels" -}}
+{{- define "CRUD-APP.labels" -}}
 app.kubernetes.io/name: {{ .Chart.Name | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 app.kubernetes.io/version: {{ .Chart.Version | quote }}
