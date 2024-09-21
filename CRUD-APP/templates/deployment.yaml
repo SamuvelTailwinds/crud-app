@@ -1,28 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.app.name }}
+  name: {{ include "crud-app.name" . }}
   labels:
-    {{- include "crud-app.labels" . | nindent 4 }}
+    {{ include "crud-app.labels" . | nindent 6 }}
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.app.name }}
-  template:
-    metadata:
-      labels:
-        app: {{ .Values.app.name }}
-    spec:
-      containers:
-        - name: {{ .Values.app.name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: {{ .Values.service.targetPort }}
-          resources:
-            requests:
-              cpu: {{ .Values.deployment.resources.requests.cpu }}
-              memory: {{ .Values.deployment.resources.requests.memory }}
-            limits:
-              cpu: {{ .Values.deployment.resources.limits.cpu }}
-              memory: {{ .Values.deployment.resources.limits.memory }}
+      {{ include "crud-app.labels" . | nindent 8 }}
