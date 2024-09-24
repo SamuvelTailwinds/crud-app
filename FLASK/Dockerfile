@@ -11,7 +11,7 @@ COPY ./requirements.txt /app
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Copy app.py and other necessary files into the container
-COPY app.py /app/
+COPY ./app.py /app/
 COPY . /app  # This will copy everything in the current directory, ensure it does not overwrite app.py if it exists
 
 # Make port 5000 available to the world outside this container
