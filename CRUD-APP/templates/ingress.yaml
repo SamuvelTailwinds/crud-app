@@ -2,9 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "CRUD-APP.fullname" . }}
+  name: {{ include "crud-app.fullname" . }}
   labels:
-    {{- include "CRUD-APP.labels" . | nindent 4 }}
+    {{- include "crud-app.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -35,7 +35,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "CRUD-APP.fullname" $ }}
+                name: {{ include "crud-app.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
