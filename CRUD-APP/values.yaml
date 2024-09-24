@@ -28,12 +28,12 @@ service:
   type: ClusterIP  # Can be ClusterIP, NodePort, or LoadBalancer
   port: 80
   targetPort: 5000
-  nodePort: 30001  # Only used if service.type is NodePort
+  # nodePort: 30001  # Commented out since ClusterIP is used, only required for NodePort
 
 # ServiceAccount configuration
 serviceAccount:
   create: true   # Set to true if you want to create a new service account
-  name: ""       # If not provided, a default name will be used
+  name: ""       # Helm will generate a default name if this is left empty
 
 # Ingress configuration
 ingress:
