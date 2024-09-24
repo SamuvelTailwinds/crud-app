@@ -3,7 +3,7 @@ FROM python:3.8-slim
 
 # Set the working directory in the container
 WORKDIR /app
-
+COPY app.py /app
 # Copy the current directory contents into the container at /app
 ADD . /app
 COPY crud-app/FLASK/requirements.txt .
