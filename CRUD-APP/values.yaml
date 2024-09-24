@@ -33,7 +33,7 @@ service:
 # ServiceAccount configuration
 serviceAccount:
   create: true   # Set to true if you want to create a new service account
-  name: ""       # Helm will generate a default name if this is left empty
+  name: "crud-app"       # Helm will generate a default name if this is left empty
 
 # Ingress configuration
 ingress:
