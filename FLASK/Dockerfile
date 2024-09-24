@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copy requirements.txt first to leverage Docker's caching mechanism
-COPY FLASK/requirements.txt /app/
+COPY ./requirements.txt /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
