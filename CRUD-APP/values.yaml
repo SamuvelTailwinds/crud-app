@@ -25,7 +25,7 @@ deployment:
 
 # Service configuration
 service:
-  type: ClusterIP  # Can be ClusterIP, NodePort, or LoadBalancer
+  type: LoadBalancer  # Can be ClusterIP, NodePort, or LoadBalancer
   port: 80
   targetPort: 5000
   # nodePort: 30001  # Commented out since ClusterIP is used, only required for NodePort
