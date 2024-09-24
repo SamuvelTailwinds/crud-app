@@ -12,7 +12,7 @@ image:
 
 # Kubernetes deployment configuration
 deployment:
-  replicas: 2  # Number of replicas
+  replicas: 3  # Number of replicas
   podAnnotations: {}
   podLabels: {}
   resources:
@@ -48,7 +48,7 @@ ingress:
 # Horizontal Pod Autoscaler (HPA) configuration
 autoscaling:
   enabled: false  # Set to true if HPA is needed
-  minReplicas: 1
+  minReplicas: 3
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80  # Target CPU percentage for scaling
 
