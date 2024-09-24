@@ -3,12 +3,15 @@ FROM python:3.8-slim
 
 # Set the working directory in the container
 WORKDIR /app
-COPY app.py /app
-# Copy the current directory contents into the container at /app
-ADD . /app
-COPY crud-app/FLASK/requirements.txt .
+
+# Copy the requirements.txt first for better caching
+COPY crud-app/FLASK/requirements.txt /app/
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
