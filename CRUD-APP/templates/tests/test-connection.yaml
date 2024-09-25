@@ -9,6 +9,6 @@ spec:
       containers:
         - name: test-connection
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          command: ["sh", "-c", "echo 'Testing connection...'"]
+          command: ["sh", "-c", "echo 'Testing connection in k8s...'"]
       restartPolicy: Never
 {{- end }}
