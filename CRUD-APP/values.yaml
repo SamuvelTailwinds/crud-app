@@ -23,6 +23,9 @@ deployment:
       cpu: 50m
       memory: 64Mi
 
+# Job configuration
+createTestConnectionJob: false  
+
 # Service configuration
 service:
   type: LoadBalancer  # Can be ClusterIP, NodePort, or LoadBalancer
@@ -32,15 +35,15 @@ service:
 
 # ServiceAccount configuration
 serviceAccount:
-  create: true   # Set to true if you want to create a new service account
-  name: "crud-app"       # Helm will generate a default name if this is left empty
+  create: true   
+  name: "crud-app"  
 
 # Ingress configuration
 ingress:
-  enabled: false  # Set to true to enable ingress
+  enabled: false  
   annotations: {}
   hosts:
-    - host: crud-app.example.com  # Replace with your domain
+    - host: crud-app.example.com  
       paths:
         - /
   tls: []  # Configure TLS if needed, otherwise leave empty
