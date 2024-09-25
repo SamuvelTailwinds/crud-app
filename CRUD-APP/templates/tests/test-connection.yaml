@@ -10,3 +10,4 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           command: ["sh", "-c", "echo 'Testing connection...'"]
       restartPolicy: Never
+  backoffLimit: 4 
