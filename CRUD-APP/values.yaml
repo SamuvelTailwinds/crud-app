@@ -52,7 +52,7 @@ ingress:
 autoscaling:
   enabled: false  # Set to true if HPA is needed
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80  # Target CPU percentage for scaling
 
 # Volume mounts (if needed for persistence)
