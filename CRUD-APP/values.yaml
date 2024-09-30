@@ -7,7 +7,7 @@ app:
 # Image configuration
 image:
   repository: samuvel/crud-app
-  tag: "null-75"
+  tag: "null-76"
   pullPolicy: IfNotPresent
 
 # Kubernetes deployment configuration
