@@ -12,7 +12,8 @@ COPY requirements.txt ./
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Copy the rest of the application code to the container
-COPY crud-app/FLASK/ ./
+# COPY crud-app/FLASK/ ./
+COPY . ./
 
 # Expose the application port (assuming Flask runs on port 5000 by default)
 EXPOSE 5000
