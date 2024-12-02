@@ -5,7 +5,8 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copy the requirements file to the working directory
-COPY FLASK/requirements.txt ./
+# COPY FLASK/requirements.txt ./
+COPY ./requirements.txt ./
 COPY . ./
 
 # Install dependencies from the requirements.txt file
